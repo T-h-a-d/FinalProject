@@ -5,6 +5,7 @@
 ** Description: 
 *******************************************************************************************/
 #include "Space.hpp"
+#include "Person.hpp"
 
 
 std::string Space::get_name()
@@ -145,7 +146,7 @@ std::string Space::room_options()
 
 
 
-void Space::inspect_room()
+void Space::inspect_room(Person*)
 {
 
 

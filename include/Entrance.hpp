@@ -19,5 +19,6 @@ public:
 	bool item_needed();
 	void print_item_needed();
 	std::string get_name_of_item_needed();
+	void inspect_room(Person*);
 };
 #endif

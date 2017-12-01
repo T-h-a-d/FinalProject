@@ -31,3 +31,9 @@ std::string Prison_Yard::get_name_of_item_needed()
 {
 	return("");
 }
+
+void Prison_Yard::inspect_room(Person*)
+{
+
+
+}

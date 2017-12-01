@@ -4,18 +4,10 @@
 ** 12/5/17
 ** Description: 
 *******************************************************************************************/
-#ifndef INMATE_HPP
-#define INMATE_HPP
-#include "Person.hpp"
+#include "Syringe.hpp"
 
-class Inmate : public Person
+
+Syringe::Syringe()
 {
-
-private:
-
-public:
-	Inmate();
-	bool kill_guard();
-
-};
-#endif
+	type = "syringe";
+}

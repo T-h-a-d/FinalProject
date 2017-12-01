@@ -31,3 +31,9 @@ std::string Kitchen::get_name_of_item_needed()
 {
 	return("");
 }
+
+void Kitchen::inspect_room(Person*)
+{
+
+
+}

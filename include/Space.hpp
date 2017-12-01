@@ -8,7 +8,8 @@
 #define SPACE_HPP
 #include <iostream>
 #include "Menu.hpp"
-#include "Person.hpp"
+
+class Person;
 
 class Space
 {

@@ -30,7 +30,7 @@ public:
 	Backpack();
 	bool is_empty();
 	void add_item(Item*);
-	void print_list();
+	int print_list();
 	void delete_item(int);
 	bool at_capacity();
 	bool item_in_backpack(std::string);

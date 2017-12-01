@@ -49,16 +49,58 @@ void Hallway::inspect_room(Person* p)
 	{
 		case 1:
 		{
-			std::cout << "I can't believe you actually picked that up ..." << std::endl;
-			std::cout << "You start to feel a rage ... " << std::endl;
-			std::cout << "Huh ... digging out of your cell might actually be faster now" << std::endl;
+			//If the inmates backpack is full allow them to choose an item to delete
+			if(p->backpack_full())
+			{
+				int user_delete_choice;
 
-			p->add_item(syringe);
+				std::cout << "Your backpack is currently full ... " << std::endl;
+				std::cout << "Would you like to delete an item from your backpack?" << std::endl;
+				Make_Menu_Option("Yes", 1);
+				Make_Menu_Option("No", 2);
+
+				Menu_Range_Int_Prompt("", user_delete_choice, 1, 2);
+
+				switch(user_delete_choice)
+				{
+					case 1:
+					{
+						//Choose an item to delete
+						p->delete_backpack_item();
+
+						//Add the syringe to the backpack
+						p->add_item(syringe);
+
+						std::cout << "I can't believe you actually picked that up ..." << std::endl;
+						std::cout << "You start to feel a rage ... " << std::endl;
+						std::cout << "Huh ... digging out of your cell might actually be faster now" << std::endl;
+
+						break;
+					}
+
+					case 2:
+					{
+						//Nothing happens because user chose not to delete item
+						std::cout << "Good choice ... who knows what diseases you might have caught" << std::endl;
+					}
+				}
+			}
+
+			else
+			{
+				std::cout << "I can't believe you actually picked that up ..." << std::endl;
+				std::cout << "You start to feel a rage ... " << std::endl;
+				std::cout << "Huh ... digging out of your cell might actually be faster now" << std::endl;
+
+				p->add_item(syringe);
+			}
+
+			break;
 		}
 
 		case 2:
 		{
-			std::cout << "Good choice" << std::endl;
+			std::cout << "Good choice ... who knows what diseases you might have caught" << std::endl;
 		}
 	}
 }

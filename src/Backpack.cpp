@@ -155,10 +155,10 @@ void Backpack::delete_item(int t)
 ** Function: print_list
 ** Description: Loops through all of the node objects in the list and prints out their 
 ** respective values to the screen. Starts with the head of the list and makes its way to
-** the tail of the list.
+** the tail of the list. Returns the number of items in the backpack
 *******************************************************************************************/
 
-void Backpack::print_list()
+int Backpack::print_list()
 {
 	//Print out items in backpack
 	int i = 1;
@@ -185,6 +185,7 @@ void Backpack::print_list()
 		}
 		std::cout << std::endl;
 	}
+	return(i - 1);
 }
 
 

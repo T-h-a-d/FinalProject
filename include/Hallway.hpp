@@ -8,8 +8,8 @@
 #define HALLWAY_HPP
 #include <iostream>
 #include "Space.hpp"
-#include "Person.hpp"
 #include "Syringe.hpp"
+#include "Person.hpp"
 
 class Hallway : public Space
 {
@@ -21,5 +21,6 @@ public:
 	bool item_needed();
 	void print_item_needed();
 	std::string get_name_of_item_needed();
+	void inspect_room(Person*);
 };
 #endif

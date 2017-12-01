@@ -44,6 +44,12 @@ std::string Jail_Cell::get_name_of_item_needed()
 	return("");
 }
 
+void Jail_Cell::inspect_room(Person*)
+{
+
+
+}
+
 
 /******************************************************************************************
 ** Function: 

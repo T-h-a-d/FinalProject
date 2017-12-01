@@ -116,7 +116,8 @@ void Play_Jail_Escape::start_game()
 
 			case(2):
 			{
-
+				//Interact with the room
+				inmate->get_location()->inspect_room(inmate);
 
 			}
 		}
@@ -124,6 +125,7 @@ void Play_Jail_Escape::start_game()
 		//Print out guard location if user has guard_radio
 		if(inmate->player_has_item("guard radio"))
 		{
+			std::cout << "Guard's Current Location: ";
 			std::cout << guard->get_location()->get_name() << std::endl;
 		}
 
@@ -209,8 +211,10 @@ bool Play_Jail_Escape::check_if_game_over()
 {
 	bool game_over = false;
 
+	//Check if the inmate and guard end up in the same room
 	if(check_location(inmate, guard) == true)
 	{
+		//Inmate can choose to shoot the guard
 		if(inmate->player_has_item("gun"))
 		{
 			if(inmate->kill_guard())

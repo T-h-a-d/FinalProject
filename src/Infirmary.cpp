@@ -31,3 +31,9 @@ std::string Infirmary::get_name_of_item_needed()
 {
 	return("");
 }
+
+void Infirmary::inspect_room(Person*)
+{
+
+
+}
