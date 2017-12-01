@@ -84,6 +84,9 @@ Play_Jail_Escape::Play_Jail_Escape()
 	entrance->set_adjacent_spaces("bottom", nullptr);
 	entrance->set_adjacent_spaces("right", hallway3);
 
+	//Initialize game_minutes to zero
+	game_minutes = 0;
+
 }
 
 
@@ -118,12 +121,20 @@ void Play_Jail_Escape::start_game()
 			}
 		}
 
+		//Print out guard location if user has guard_radio
+		if(inmate->player_has_item("guard radio"))
+		{
+			std::cout << guard->get_location()->get_name() << std::endl;
+		}
+
 		//Each action takes 10 minutes
 		game_minutes = game_minutes + 10;
 
 	}
 	while(!check_if_game_over());
 
+	std::cout << std::endl;
+	std::cout << "GAME OVER" << std::endl;
 }
 
 void Play_Jail_Escape::move_person(Person* p, std::string direction)
@@ -132,7 +143,7 @@ void Play_Jail_Escape::move_person(Person* p, std::string direction)
 	Space* current_position = p->get_location();
 
 	//Check if player needs access to get into certain space
-	if(current_position->get_adjacent_space(direction)->check_if_item_needed())
+	if(current_position->get_adjacent_space(direction)->item_needed())
 	{
 		std::string item_name = current_position->get_adjacent_space(direction)->get_name_of_item_needed();
 
@@ -147,7 +158,7 @@ void Play_Jail_Escape::move_person(Person* p, std::string direction)
 		//Player does not have required access to the space
 		else
 		{
-			current_position->get_adjacent_space(direction)->print_no_item_str();
+			current_position->get_adjacent_space(direction)->print_item_needed();
 		}
 	}
 
@@ -194,23 +205,40 @@ int Play_Jail_Escape::print_user_options()
 }
 
 
-bool check_if_game_over()
+bool Play_Jail_Escape::check_if_game_over()
 {
 	bool game_over = false;
 
 	if(check_location(inmate, guard) == true)
 	{
-		return(true);
+		if(inmate->player_has_item("gun"))
+		{
+			if(inmate->kill_guard())
+			{
+				game_over = false;
+			}
+
+			else
+			{
+				std::cout << "You've been caught by the guard ... !" << std::endl;
+				game_over = true;
+			}
+		}
+
+		else
+		{
+			std::cout << "You've been caught by the guard ... !" << std::endl;
+			game_over = true;
+		}	
 	}
 
-	//Prisoner has 10 hours to escape
-	else if(game_minutes == 600)
+	//Prisoner has 5 hours to escape
+	if(game_minutes == 300)
 	{
-		return(true);
+		std::cout << "You ran out of time!" << std::endl;
+
+		game_over = true;
 	}
-
-	else if()
-
 
 	return(game_over);
 }

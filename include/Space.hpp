@@ -8,6 +8,7 @@
 #define SPACE_HPP
 #include <iostream>
 #include "Menu.hpp"
+#include "Person.hpp"
 
 class Space
 {
@@ -27,7 +28,8 @@ public:
 	std::string room_options();
 	virtual bool item_needed() = 0;
 	virtual void print_item_needed() = 0;
-	//virtual void inspect_room() = 0;
+	virtual std::string get_name_of_item_needed() = 0;
+	virtual void inspect_room(Person*) = 0;
 	virtual ~Space();
 
 };

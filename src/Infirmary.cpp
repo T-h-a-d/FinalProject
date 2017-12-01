@@ -26,3 +26,8 @@ void Infirmary::print_item_needed()
 
 	
 }
+
+std::string Infirmary::get_name_of_item_needed()
+{
+	return("");
+}

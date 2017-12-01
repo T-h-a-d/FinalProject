@@ -33,6 +33,13 @@ bool Person::player_has_item(std::string item)
 	return(has_item);
 }
 
+void Person::add_item(Item* player_item)
+{
+	//Add item pointer to backpack
+	pack->add_item(player_item);
+}
+
+
 Person::~Person()
 {
 

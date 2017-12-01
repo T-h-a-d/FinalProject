@@ -26,3 +26,8 @@ void Prison_Yard::print_item_needed()
 
 	
 }
+
+std::string Prison_Yard::get_name_of_item_needed()
+{
+	return("");
+}

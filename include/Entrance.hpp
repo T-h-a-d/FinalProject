@@ -13,7 +13,11 @@ class Entrance : public Space
 {
 private:
 
+
 public:
 	Entrance();
+	bool item_needed();
+	void print_item_needed();
+	std::string get_name_of_item_needed();
 };
 #endif

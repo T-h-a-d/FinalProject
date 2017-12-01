@@ -39,6 +39,11 @@ void Jail_Cell::print_item_needed()
 
 }
 
+std::string Jail_Cell::get_name_of_item_needed()
+{
+	return("");
+}
+
 
 /******************************************************************************************
 ** Function: 

@@ -28,3 +28,8 @@ void Wardens_Office::print_item_needed()
 	std::cout << "Hint: Look around the Prison Yard ... the Warden is clumsy." << std::endl;
 	std::cout << std::endl;
 }
+
+std::string Wardens_Office::get_name_of_item_needed()
+{
+	return("key card");
+}

@@ -15,6 +15,7 @@ private:
 
 public:
 	Inmate();
+	void kill_guard();
 
 };
 #endif

@@ -21,6 +21,7 @@ public:
 	bool player_has_item(std::string);
 	Space* get_location();
 	void set_location(Space*);
+	void add_item(Item*);
 	virtual ~Person();
 
 };

@@ -4,19 +4,11 @@
 ** 12/5/17
 ** Description: 
 *******************************************************************************************/
-#ifndef KITCHEN_HPP
-#define KITCHEN_HPP
-#include "Space.hpp"
-#include "Person.hpp"
+#include "Key_Card.hpp"
 
-class Kitchen : public Space
+
+Key_Card::Key_Card()
 {
-private:
+	type = "key card";
+}
 
-public:
-	Kitchen();
-	bool item_needed();
-	void print_item_needed();
-	std::string get_name_of_item_needed();
-};
-#endif

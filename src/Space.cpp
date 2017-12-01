@@ -145,12 +145,12 @@ std::string Space::room_options()
 
 
 
-//void Space::inspect_room()
-//{
+void Space::inspect_room()
+{
 
 
 
-//}
+}
 
 
 

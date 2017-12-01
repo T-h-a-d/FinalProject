@@ -19,5 +19,8 @@ public:
 	Jail_Cell();
 	void dig();
 	bool check_if_spoon();
+	bool item_needed();
+	void print_item_needed();
+	std::string get_name_of_item_needed();
 };
 #endif

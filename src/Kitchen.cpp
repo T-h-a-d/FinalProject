@@ -21,8 +21,13 @@ bool Kitchen::item_needed()
 	return(false);
 }
 
-void Kitchen::print_item_needed
+void Kitchen::print_item_needed()
 {
 
 	
+}
+
+std::string Kitchen::get_name_of_item_needed()
+{
+	return("");
 }
