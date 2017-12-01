@@ -18,6 +18,7 @@ protected:
 	Backpack pack;
 	Space* current_location;	//To keep track of the person's location
 
+	int dig_speed;
 
 public:
 	bool player_has_item(std::string);
@@ -27,6 +28,9 @@ public:
 	bool kill_guard();
 	bool backpack_full();
 	void delete_backpack_item();
+	void delete_specific_item(std::string);
+	void under_influence();
+	void print_backpack_contents();
 	virtual ~Person();
 
 };

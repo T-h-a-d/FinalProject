@@ -6,6 +6,10 @@
 *******************************************************************************************/
 #include "Play_Jail_Escape.hpp"
 
+/******************************************************************************************
+** Constructor: 
+** Description: 
+*******************************************************************************************/
 
 Play_Jail_Escape::Play_Jail_Escape()
 {
@@ -87,8 +91,16 @@ Play_Jail_Escape::Play_Jail_Escape()
 	//Initialize game_minutes to zero
 	game_minutes = 0;
 
+	//Starting hour is 1:00 am
+	starting_hour = 1;
+	minutes = 0;
+
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Play_Jail_Escape::start_game()
 {
@@ -96,6 +108,8 @@ void Play_Jail_Escape::start_game()
 
 	do
 	{
+		print_clock();
+
 		int user_choice_1 = print_user_options();
 
 		switch(user_choice_1)
@@ -119,6 +133,13 @@ void Play_Jail_Escape::start_game()
 				//Interact with the room
 				inmate->get_location()->inspect_room(inmate);
 
+				break;
+
+			}
+
+			case(3):
+			{
+				inmate->print_backpack_contents();
 			}
 		}
 
@@ -131,6 +152,7 @@ void Play_Jail_Escape::start_game()
 
 		//Each action takes 10 minutes
 		game_minutes = game_minutes + 10;
+		minutes = minutes + 10;
 
 	}
 	while(!check_if_game_over());
@@ -138,6 +160,11 @@ void Play_Jail_Escape::start_game()
 	std::cout << std::endl;
 	std::cout << "GAME OVER" << std::endl;
 }
+
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Play_Jail_Escape::move_person(Person* p, std::string direction)
 {
@@ -173,6 +200,10 @@ void Play_Jail_Escape::move_person(Person* p, std::string direction)
 	}
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 bool Play_Jail_Escape::check_location(Person* p1, Person* p2)
 {
@@ -194,18 +225,28 @@ bool Play_Jail_Escape::check_location(Person* p1, Person* p2)
 	return(same_location);
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 int Play_Jail_Escape::print_user_options()
 {
 	int user_choice;
 
 	std::cout << "1. Travel to another room " << std::endl;
 	std::cout << "2. Inspect current room" << std::endl;
+	std::cout << "3. Look at contents of backpack" << std::endl;
 
-	Menu_Range_Int_Prompt("", user_choice, 1, 2);
+	Menu_Range_Int_Prompt("", user_choice, 1, 3);
 
 	return(user_choice);
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 bool Play_Jail_Escape::check_if_game_over()
 {
@@ -236,8 +277,8 @@ bool Play_Jail_Escape::check_if_game_over()
 		}	
 	}
 
-	//Prisoner has 5 hours to escape
-	if(game_minutes == 300)
+	//Prisoner has 6 hours to escape
+	if(game_minutes == 360)
 	{
 		std::cout << "You ran out of time!" << std::endl;
 
@@ -246,6 +287,45 @@ bool Play_Jail_Escape::check_if_game_over()
 
 	return(game_over);
 }
+
+void Play_Jail_Escape::print_clock()
+{
+	if(game_minutes % 60 == 0)
+	{
+		if(game_minutes == 0)
+		{
+			//Do nothing
+		}
+		else
+		{
+			starting_hour++;
+			minutes = 0;
+		}
+	}
+
+	if(minutes == 0)
+	{
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << "---------------- Time: "<< starting_hour << ":" << minutes << "0";
+		std::cout << " -----------------" << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+	}
+
+	else
+	{
+		std::cout << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << "---------------- Time: "<< starting_hour << ":" << minutes;
+		std::cout << " -----------------" << std::endl;
+		std::cout << "---------------------------------------------" << std::endl;
+	}
+}
+
+/******************************************************************************************
+** Destructor: 
+** Description: 
+*******************************************************************************************/
 
 Play_Jail_Escape::~Play_Jail_Escape()
 {

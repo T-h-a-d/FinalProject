@@ -37,6 +37,10 @@ private:
 	//Keep track of in-game minutes
 	int game_minutes;
 
+	//Keep track of in-game clock
+	int starting_hour;
+	int minutes;
+
 public:
 	Play_Jail_Escape();
 	void start_game();
@@ -44,6 +48,7 @@ public:
 	bool check_location(Person*, Person*);
 	int print_user_options();
 	bool check_if_game_over();
+	void print_clock();
 	~Play_Jail_Escape();
 
 

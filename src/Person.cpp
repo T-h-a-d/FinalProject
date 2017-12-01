@@ -67,6 +67,22 @@ void Person::delete_backpack_item()
 	pack.delete_item(user_delete_choice);
 }
 
+void Person::delete_specific_item(std::string str)
+{
+	pack.delete_specific_item(str);
+}
+
+void Person::under_influence()
+{
+	//If the player uses the PCP syringe, dig speed increases 10 fold
+	dig_speed = 10;
+}
+
+void Person::print_backpack_contents()
+{
+	pack.print_list();
+}
+
 bool Person::kill_guard()
 {
 

@@ -17,10 +17,20 @@ Hallway::Hallway(std::string n)
 	syringe = new Syringe;
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 bool Hallway::item_needed()
 {
 	return(false);
 }
+
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Hallway::print_item_needed()
 {
@@ -33,12 +43,22 @@ std::string Hallway::get_name_of_item_needed()
 	return("");
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 void Hallway::inspect_room(Person* p)
+{
+	found_syringe(p);
+}
+
+void Hallway::found_syringe(Person* p)
 {
 	int user_choice;
 
 	std::cout << "Wow this is a dirty ward. Do they ever clean up around here?" << std::endl;
-	std::cout << "Oh look a steroid syringe!" << std::endl;
+	std::cout << "Oh look a syringe filled with PCP!" << std::endl;
 
 	std::cout << "1. Pick up syringe" << std::endl;
 	std::cout << "2. Leave that nasty thing where it belongs" << std::endl;
@@ -71,9 +91,10 @@ void Hallway::inspect_room(Person* p)
 						//Add the syringe to the backpack
 						p->add_item(syringe);
 
+						std::cout << std::endl;
 						std::cout << "I can't believe you actually picked that up ..." << std::endl;
-						std::cout << "You start to feel a rage ... " << std::endl;
-						std::cout << "Huh ... digging out of your cell might actually be faster now" << std::endl;
+						std::cout << "It's too dangerous to adminster yourself, but maybe you can get the nurse to do it" << std::endl;
+						std::cout << std::endl;
 
 						break;
 					}
@@ -88,9 +109,10 @@ void Hallway::inspect_room(Person* p)
 
 			else
 			{
+				std::cout << std::endl;
 				std::cout << "I can't believe you actually picked that up ..." << std::endl;
-				std::cout << "You start to feel a rage ... " << std::endl;
-				std::cout << "Huh ... digging out of your cell might actually be faster now" << std::endl;
+				std::cout << "It's too dangerous to adminster yourself, but maybe you can get the nurse to do it" << std::endl;
+				std::cout << std::endl;
 
 				p->add_item(syringe);
 			}

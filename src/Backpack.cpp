@@ -165,7 +165,9 @@ int Backpack::print_list()
 
 	if(head == nullptr && tail == nullptr)
 	{
-		std::cout << "There are no tools currently in your backpack" << std::endl;
+		std::cout << std::endl;
+		std::cout << "There are no items currently in your backpack" << std::endl;
+		std::cout << std::endl;
 	}
 
 	else
@@ -226,6 +228,73 @@ bool Backpack::item_in_backpack(std::string item_type)
 	}
 
 	return(item);
+}
+
+void Backpack::delete_specific_item(std::string item_type)
+{
+	Node* findItem = head;
+
+	while(findItem)
+	{
+		if(findItem->tool->get_type() == item_type)
+		{
+			//If the item to delete is at the front
+			if(findItem == head)
+			{
+				//If there is only one item in the list
+				if(findItem->next == nullptr && findItem->prev == nullptr)
+				{
+					delete findItem;
+
+					head = nullptr;
+					tail = nullptr;
+				}
+
+				else
+				{
+					head = findItem->next;
+					head->prev = nullptr;
+
+					delete findItem;
+				}	
+			}
+
+			//If the item to delete is at the front
+			else if(findItem == tail)
+			{
+				//If there is only one item in the list
+				if(findItem->next == nullptr && findItem->prev == nullptr)
+				{
+					delete findItem;
+
+					head = nullptr;
+					tail = nullptr;
+				}
+
+				else
+				{
+					tail = findItem->prev;
+					tail->next = nullptr;
+
+					delete findItem;
+				}	
+			}
+
+			//Else the item must be in the middle
+			else
+			{
+				findItem->next->prev = head;
+				findItem->prev->next = tail;
+
+				delete findItem;
+			}
+
+			//Return if item is found and deleted
+			return;
+		}
+		//Move to next item in backpack
+		findItem = findItem->next;
+	}
 }
 
 /******************************************************************************************

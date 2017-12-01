@@ -34,6 +34,7 @@ public:
 	void delete_item(int);
 	bool at_capacity();
 	bool item_in_backpack(std::string);
+	void delete_specific_item(std::string);
 	~Backpack();
 };
 #endif
