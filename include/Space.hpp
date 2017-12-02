@@ -8,6 +8,7 @@
 #define SPACE_HPP
 #include <iostream>
 #include "Menu.hpp"
+#include <cstdlib>
 
 class Person;
 
@@ -27,6 +28,7 @@ public:
 	void set_adjacent_spaces(std::string, Space*);
 	Space* get_adjacent_space(std::string);
 	std::string room_options();
+	virtual bool done_digging();
 	virtual bool item_needed() = 0;
 	virtual void print_item_needed() = 0;
 	virtual std::string get_name_of_item_needed() = 0;

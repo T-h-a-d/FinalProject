@@ -9,5 +9,5 @@
 
 Syringe::Syringe()
 {
-	type = "syringe";
+	type = "Syringe";
 }

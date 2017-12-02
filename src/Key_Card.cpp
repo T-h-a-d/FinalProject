@@ -9,6 +9,6 @@
 
 Key_Card::Key_Card()
 {
-	type = "key card";
+	type = "Key Card";
 }
 

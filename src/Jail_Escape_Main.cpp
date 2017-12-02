@@ -9,6 +9,8 @@
 
 int main()
 {
+	std::srand(time(0)); //Starts a seed using the computers internal clock 
+
 	/**
 	Backpack pack;
 	Item* Radio = new Guard_Radio;

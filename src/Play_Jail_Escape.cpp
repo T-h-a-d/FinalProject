@@ -144,7 +144,7 @@ void Play_Jail_Escape::start_game()
 		}
 
 		//Print out guard location if user has guard_radio
-		if(inmate->player_has_item("guard radio"))
+		if(inmate->player_has_item("Guard's Radio"))
 		{
 			std::cout << "Guard's Current Location: ";
 			std::cout << guard->get_location()->get_name() << std::endl;
@@ -156,9 +156,6 @@ void Play_Jail_Escape::start_game()
 
 	}
 	while(!check_if_game_over());
-
-	std::cout << std::endl;
-	std::cout << "GAME OVER" << std::endl;
 }
 
 /******************************************************************************************
@@ -252,6 +249,15 @@ bool Play_Jail_Escape::check_if_game_over()
 {
 	bool game_over = false;
 
+	if(jail_cell->done_digging() == true)
+	{
+		std::cout << std::endl;
+		std::cout << "You have escaped from Jail!" << std::endl;
+		std::cout << std::endl;
+		std::cout << "YOU WIN" << std::endl;
+		return(true);
+	}
+
 	//Check if the inmate and guard end up in the same room
 	if(check_location(inmate, guard) == true)
 	{
@@ -266,6 +272,9 @@ bool Play_Jail_Escape::check_if_game_over()
 			else
 			{
 				std::cout << "You've been caught by the guard ... !" << std::endl;
+				std::cout << std::endl;
+				std::cout << "GAME OVER" << std::endl;
+				std::cout << std::endl;
 				game_over = true;
 			}
 		}
@@ -273,6 +282,10 @@ bool Play_Jail_Escape::check_if_game_over()
 		else
 		{
 			std::cout << "You've been caught by the guard ... !" << std::endl;
+			std::cout << std::endl;
+			std::cout << "GAME OVER" << std::endl;
+			std::cout << std::endl;
+
 			game_over = true;
 		}	
 	}
@@ -281,6 +294,9 @@ bool Play_Jail_Escape::check_if_game_over()
 	if(game_minutes == 360)
 	{
 		std::cout << "You ran out of time!" << std::endl;
+		std::cout << std::endl;
+		std::cout << "GAME OVER" << std::endl;
+		std::cout << std::endl;
 
 		game_over = true;
 	}

@@ -11,6 +11,9 @@ Inmate::Inmate()
 {
 	//dig_speed initially set to 1
 	dig_speed = 1;	
+
+	//Inmate is not initially under the influence 
+	under_influence = false;
 }
 
 

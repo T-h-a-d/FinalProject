@@ -46,7 +46,7 @@ void Wardens_Office::print_item_needed()
 
 std::string Wardens_Office::get_name_of_item_needed()
 {
-	return("key card");
+	return("Key Card");
 }
 
 /******************************************************************************************

@@ -9,6 +9,6 @@
 
 Guard_Radio::Guard_Radio()
 {
-	type = "Guard Radio";
+	type = "Guard's Radio";
 }
 

@@ -54,7 +54,7 @@ std::string Infirmary::get_name_of_item_needed()
 
 void Infirmary::inspect_room(Person* p)
 {
-	if(p->player_has_item("syringe"))
+	if(p->player_has_item("Syringe"))
 	{
 		int user_choice;
 
@@ -69,8 +69,8 @@ void Infirmary::inspect_room(Person* p)
 		{
 			case 1:
 			{
-				p->delete_specific_item("syringe");
-				p->under_influence();
+				p->use_syringe();
+				p->delete_specific_item("Syringe");
 
 				break;
 			}
@@ -89,5 +89,4 @@ void Infirmary::inspect_room(Person* p)
 		std::cout << "If only you had an illegal substance that would increase strength and stamina ..." << std::endl;
 		std::cout << std::endl;
 	}
-
 }

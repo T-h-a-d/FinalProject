@@ -12,6 +12,9 @@
 class Kitchen : public Space
 {
 private:
+	Item* spoon;
+
+	bool has_spoon;
 
 public:
 	Kitchen();
