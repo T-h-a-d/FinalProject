@@ -16,12 +16,14 @@ class Person
 {
 protected:
 	Backpack pack;
-	Space* current_location;	//To keep track of the person's location
+	Space* current_location;	//To keep track of the person's 
+	std::string type;
 
 	int dig_speed;
 	bool under_influence;
 
 public:
+	std::string get_type();
 	bool player_has_item(std::string);
 	Space* get_location();
 	void set_location(Space*);

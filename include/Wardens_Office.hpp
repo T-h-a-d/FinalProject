@@ -8,10 +8,13 @@
 #define WARDENS_OFFICE_HPP
 #include "Space.hpp"
 #include "Person.hpp"
+#include "Wardens_Mask.hpp"
 
 class Wardens_Office : public Space
 {
 private:
+	Item* wardens_mask;
+	bool has_wardens_mask;
 
 public:
 	Wardens_Office();

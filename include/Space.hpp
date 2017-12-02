@@ -27,7 +27,8 @@ public:
 	std::string get_name();
 	void set_adjacent_spaces(std::string, Space*);
 	Space* get_adjacent_space(std::string);
-	std::string room_options();
+	std::string room_options_player();
+	std::string room_options_guard();
 	virtual bool done_digging();
 	virtual bool item_needed() = 0;
 	virtual void print_item_needed() = 0;

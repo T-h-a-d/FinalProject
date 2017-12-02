@@ -9,7 +9,6 @@
 
 Guard::Guard()
 {
-
-
+	type = "Guard";
 	
 }

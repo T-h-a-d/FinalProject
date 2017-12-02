@@ -7,6 +7,11 @@
 #include "Person.hpp"
 #include "Space.hpp"
 
+std::string Person::get_type()
+{
+	return(type);
+}
+
 Space* Person::get_location()
 {
 	return(current_location);

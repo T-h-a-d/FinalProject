@@ -47,7 +47,7 @@ void Entrance::print_item_needed()
 
 std::string Entrance::get_name_of_item_needed()
 {
-	return("Warden's Office");
+	return("Warden's Mask");
 }
 
 /******************************************************************************************

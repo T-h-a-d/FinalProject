@@ -8,10 +8,13 @@
 #define PRISON_YARD_HPP
 #include "Space.hpp"
 #include "Person.hpp"
+#include "Key_Card.hpp"
 
 class Prison_Yard : public Space
 {
 private:
+	Item* keycard;
+	bool has_keycard;
 
 public:
 	Prison_Yard();

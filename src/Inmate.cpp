@@ -9,6 +9,8 @@
 
 Inmate::Inmate()
 {
+	type = "Inmate";
+	
 	//dig_speed initially set to 1
 	dig_speed = 1;	
 

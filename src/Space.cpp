@@ -64,7 +64,7 @@ Space* Space::get_adjacent_space(std::string direction)
 //
 //
 
-std::string Space::room_options()
+std::string Space::room_options_player()
 {
 	int user_location_choice;
 	int print_options = 1;
@@ -143,6 +143,83 @@ std::string Space::room_options()
 		}
 	}
 }
+
+std::string Space::room_options_guard()
+{
+	int guard_location_choice;
+	int print_options = 1;
+	int num_array[4];
+
+	//Set all elements in array to zero
+	for(int i = 0; i < 4; i++)
+	{
+		num_array[i] = 0;
+	}
+
+	if(right != nullptr)
+	{
+		print_options++;
+
+		//right = 1
+		num_array[print_options - 2] = 1;
+	}
+
+	if(left != nullptr)
+	{
+		print_options++;
+
+		//left = 2
+		num_array[print_options - 2] = 2;
+	}
+
+	if(top != nullptr)
+	{
+		print_options++;
+
+		//top = 3
+		num_array[print_options - 2] = 3;
+	}
+
+	if(bottom != nullptr)
+	{
+		print_options++;
+
+		//bottom = 4
+		num_array[print_options - 2] = 4;
+	}
+
+	guard_location_choice = rand() % (print_options - 1) + 1;
+
+	std::cout << print_options << std::endl;
+
+	std::cout << guard_location_choice << std::endl;
+
+	int choice = num_array[guard_location_choice - 1];
+
+	switch(choice)
+	{
+		case 1:
+		{
+			return "right";
+		}
+
+		case 2:
+		{
+			return "left";
+		}
+
+		case 3:
+		{
+			return "top";
+		}
+
+		case 4:
+		{
+			return "bottom";
+		}
+	}
+}
+
 
 
 

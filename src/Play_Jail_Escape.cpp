@@ -112,16 +112,23 @@ void Play_Jail_Escape::start_game()
 
 		int user_choice_1 = print_user_options();
 
+		//Move the guard in a random direction regardless of the user choice (once per turn)
+		std::string guard_direction;
+
+		guard_direction = guard->get_location()->room_options_guard();
+
+		move_person(guard, guard_direction);
+
 		switch(user_choice_1)
 		{
 			case(1):
 			{
+				//Move the inmate based on user input
 				std::string user_direction;
-				int num_locations;
 
 				std::cout << "Where would you like to go?" << std::endl;
 				std::cout << std::endl;
-				user_direction = inmate->get_location()->room_options();
+				user_direction = inmate->get_location()->room_options_player();
 
 				move_person(inmate, user_direction);
 
@@ -139,6 +146,7 @@ void Play_Jail_Escape::start_game()
 
 			case(3):
 			{
+				//List the current items in the backpack
 				inmate->print_backpack_contents();
 			}
 		}
@@ -168,30 +176,41 @@ void Play_Jail_Escape::move_person(Person* p, std::string direction)
 	//Get current location of person
 	Space* current_position = p->get_location();
 
-	//Check if player needs access to get into certain space
-	if(current_position->get_adjacent_space(direction)->item_needed())
+	if(p->get_type() == "Inmate")
 	{
-		std::string item_name = current_position->get_adjacent_space(direction)->get_name_of_item_needed();
+		//Check if player needs access to get into certain space
+		if(current_position->get_adjacent_space(direction)->item_needed())
+		{
+			std::string item_name = current_position->get_adjacent_space(direction)->get_name_of_item_needed();
 
-		//Player has the item needed to enter the space
-		if(p->player_has_item(item_name))
+			//Player has the item needed to enter the space
+			if(p->player_has_item(item_name))
+			{
+				//Set new position equal the direction that the user entered
+				Space* new_position = current_position->get_adjacent_space(direction);
+				p->set_location(new_position);
+			}
+
+			//Player does not have required access to the space
+			else
+			{
+				current_position->get_adjacent_space(direction)->print_item_needed();
+			}
+		}
+
+		//No item is required to enter the space
+		else
 		{
 			//Set new position equal the direction that the user entered
 			Space* new_position = current_position->get_adjacent_space(direction);
 			p->set_location(new_position);
 		}
-
-		//Player does not have required access to the space
-		else
-		{
-			current_position->get_adjacent_space(direction)->print_item_needed();
-		}
 	}
 
-	//No item is required to enter the space
+	//Else the person to move is the guard
 	else
 	{
-		//Set new position equal the direction that the user entered
+		//Set new position equal to the direction parameter
 		Space* new_position = current_position->get_adjacent_space(direction);
 		p->set_location(new_position);
 	}
@@ -249,6 +268,20 @@ bool Play_Jail_Escape::check_if_game_over()
 {
 	bool game_over = false;
 
+	//Check if the inmate reached the entrance with the Warden's Mask
+	if(inmate->get_location()->get_name() == "Entrance")
+	{
+		std::cout << std::endl;
+		std::cout << "Guard at Entrance: Hey Warden, just checking out?" << std::endl;
+		std::cout << "You: Ehm yeah see you tomorrow ..." << std::endl;
+		std::cout << " ... " << std::endl;
+		std::cout << "You have escaped from Jail!" << std::endl;
+		std::cout << std::endl;
+		std::cout << "YOU WIN" << std::endl;
+		return(true);
+	}
+
+	//Check if the inmate has finished digging the hole through his cell
 	if(jail_cell->done_digging() == true)
 	{
 		std::cout << std::endl;
@@ -261,8 +294,21 @@ bool Play_Jail_Escape::check_if_game_over()
 	//Check if the inmate and guard end up in the same room
 	if(check_location(inmate, guard) == true)
 	{
+		//Guard does not recognize inmate if he has the Warden's Mask
+		if(inmate->player_has_item("Warden's Mask"))
+		{
+			std::cout << std::endl;
+			std::cout << "Guard: Warden?! What are you doing here so late ..." << std::endl;
+			std::cout << "You: I uh had some work to catch up on" << std::endl;
+			std::cout << "Guard: Okay good luck with that. See you around " << std::endl;
+			std::cout << std::endl;
+			std::cout << "Wow that was a close one ..." << std::endl;
+			std::cout << std::endl;
+
+		}
+
 		//Inmate can choose to shoot the guard
-		if(inmate->player_has_item("gun"))
+		else if(inmate->player_has_item("gun"))
 		{
 			if(inmate->kill_guard())
 			{
@@ -322,19 +368,19 @@ void Play_Jail_Escape::print_clock()
 	if(minutes == 0)
 	{
 		std::cout << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << "---------------- Time: "<< starting_hour << ":" << minutes << "0";
-		std::cout << " -----------------" << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << "--------------" << std::endl;
+		std::cout << "- Time: "<< starting_hour << ":" << minutes << "0";
+		std::cout << " -" << std::endl;
+		std::cout << "--------------" << std::endl;
 	}
 
 	else
 	{
 		std::cout << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
-		std::cout << "---------------- Time: "<< starting_hour << ":" << minutes;
-		std::cout << " -----------------" << std::endl;
-		std::cout << "---------------------------------------------" << std::endl;
+		std::cout << "--------------" << std::endl;
+		std::cout << "- Time: "<< starting_hour << ":" << minutes;
+		std::cout << " -" << std::endl;
+		std::cout << "--------------" << std::endl;
 	}
 }
 
