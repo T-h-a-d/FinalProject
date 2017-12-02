@@ -5,6 +5,7 @@
 ** Description: 
 *******************************************************************************************/
 #include "Play_Jail_Escape.hpp"
+#include <iostream>
 
 
 int main()
@@ -15,7 +16,7 @@ int main()
 	std::cout << std::endl;
 	std::cout << "=========================================================================" << std::endl;
 	std::cout << "--                                                                     --" << std::endl;
-	std::cout << "--                			WELCOME TO JAIL ESCAPE                         --" << std::endl;
+	std::cout << "--                    	WELCOME TO JAIL ESCAPE                         --" << std::endl;
 	std::cout << "--                                                                     --" << std::endl;
 	std::cout << "=========================================================================" << std::endl;
 	std::cout << std::endl;
@@ -31,6 +32,10 @@ int main()
 	std::cout << "=========================================================================" << std::endl;
 
 	std::cout << std::endl;
+	std::cout << "Press enter to continue ...";
+	std::cin.ignore();
+
+	std::cout << std::endl;
 	std::cout << "=========================================================================" << std::endl;
 	std::cout << "-- Objective --                                                        --" << std::endl;
 	std::cout << "---------------                                                        --" << std::endl;
@@ -39,8 +44,32 @@ int main()
 	std::cout << "-- each turn costs you 10 minutes. You better move fast!               --" << std::endl;
 	std::cout << "=========================================================================" << std::endl;
 
+	std::cout << std::endl;
+	std::cout << "Press enter to continue ...";
+	std::cin.ignore();
 
+	std::cout << std::endl;
+	std::cout << "=========================================================================" << std::endl;
+	std::cout << "-- How to Escape --                                                    --" << std::endl;
+	std::cout << "-------------------                                                    --" << std::endl;
+	std::cout << "-- There are 2 different ways to escape. The inmate can either find    --" << std::endl;
+	std::cout << "-- the Warden's Mask and escape through the Entrance, or the inmate    --" << std::endl;
+	std::cout << "-- can find the spoon and use it to dig a hole in their cell. Either   --" << std::endl;
+	std::cout << "-- way, you must avoid the patrolling guard! If he catches you, then   --" << std::endl;
+	std::cout << "-- you automatically lose the game!                                    --" << std::endl;
+	std::cout << "--                                                                     --" << std::endl;
+	std::cout << "-- Hint: Certain items you collect will give you special abilities.    --" << std::endl;
+	std::cout << "-- Choose the items you collect wisely because you can only carry 3    --" << std::endl;
+	std::cout << "-- items at a time. Once you drop an item it is gone for good!         --" << std::endl;
+	std::cout << "--                                                                     --" << std::endl;
+	std::cout << "--                           GOOD LUCK!                                --" << std::endl;
+	std::cout << "=========================================================================" << std::endl;
 
+	std::cout << std::endl;
+	std::cout << "Press enter to start game ...";
+	std::cin.ignore();
+
+	                                                   
 	Play_Jail_Escape play_game;
 
 	play_game.start_game();
