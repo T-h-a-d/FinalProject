@@ -7,11 +7,20 @@
 #include "Space.hpp"
 #include "Person.hpp"
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 std::string Space::get_name()
 {
 	return(name);
 }
+
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Space::set_adjacent_spaces(std::string direction, Space* spc)
 {
@@ -36,6 +45,11 @@ void Space::set_adjacent_spaces(std::string direction, Space* spc)
 	}
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 Space* Space::get_adjacent_space(std::string direction)
 {
 	if(direction == "right")
@@ -58,11 +72,11 @@ Space* Space::get_adjacent_space(std::string direction)
 		return(bottom);
 	}
 }
-//
-// Returns the number of choices the player has to make
-//
-//
-//
+
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 std::string Space::room_options_player()
 {
@@ -144,6 +158,11 @@ std::string Space::room_options_player()
 	}
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 std::string Space::room_options_guard()
 {
 	int guard_location_choice;
@@ -190,10 +209,6 @@ std::string Space::room_options_guard()
 
 	guard_location_choice = rand() % (print_options - 1) + 1;
 
-	std::cout << print_options << std::endl;
-
-	std::cout << guard_location_choice << std::endl;
-
 	int choice = num_array[guard_location_choice - 1];
 
 	switch(choice)
@@ -220,8 +235,10 @@ std::string Space::room_options_guard()
 	}
 }
 
-
-
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Space::inspect_room(Person*)
 {
@@ -230,11 +247,15 @@ void Space::inspect_room(Person*)
 
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
+
 bool Space::done_digging()
 {
 
 }
-
 
 
 /******************************************************************************************

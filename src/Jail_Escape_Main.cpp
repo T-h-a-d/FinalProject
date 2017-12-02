@@ -25,7 +25,7 @@ int main()
 	std::cout << "=========================================================================" << std::endl;
 	std::cout << "-- Backstory --                                                        --" << std::endl;
 	std::cout << "---------------                                                        --" << std::endl;
-	std::cout << "-- You are an inmate at a maximum-security prison. It is the middle of --" << std::endl;
+	std::cout << "-- You are an inmate at a ma|imum-security prison. It is the middle of --" << std::endl;
 	std::cout << "-- the night and your jail cell mysteriously opens. You peek out into  --" << std::endl;
 	std::cout << "-- the hallway and see that everyone else is asleep. The guard is      --" << std::endl;
 	std::cout << "-- nowhere to be seen ...                                              --" << std::endl;
@@ -69,7 +69,7 @@ int main()
 	std::cout << "Press enter to start game ...";
 	std::cin.ignore();
 
-	                                                   
+
 	Play_Jail_Escape play_game;
 
 	play_game.start_game();
