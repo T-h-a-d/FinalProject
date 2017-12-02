@@ -12,16 +12,18 @@
 class Jail_Cell : public Space
 {
 private:
-	int hole;
-	int hours_dug;
+	bool hole;
+	bool hole_is_done;
+	float minutes_dug;
+	float minutes_to_completion;
+	float total_min_needed;
 
 public:
 	Jail_Cell();
-	void dig();
-	bool check_if_spoon();
 	bool item_needed();
 	void print_item_needed();
 	std::string get_name_of_item_needed();
 	void inspect_room(Person*);
+	bool done_digging();
 };
 #endif
