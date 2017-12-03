@@ -22,7 +22,7 @@ Backpack::Backpack()
 
 /******************************************************************************************
 ** Function: is_empty
-** Description: 
+** Description: Returns true if the backpack has no items in it and false otherwise.
 *******************************************************************************************/
 
 bool Backpack::is_empty()
@@ -84,7 +84,7 @@ void Backpack::add_item(Item* t)
 }
 
 /******************************************************************************************
-** Function: 
+** Function: delete_item
 ** Description: 
 *******************************************************************************************/
 
@@ -149,6 +149,9 @@ void Backpack::delete_item(int t)
 
 		delete garbage;
 	}
+
+	//Decrement number of tools
+	num_tools = num_tools - 1;
 }
 
 /******************************************************************************************
@@ -209,6 +212,10 @@ bool Backpack::at_capacity()
 	}
 }
 
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 bool Backpack::item_in_backpack(std::string item_type)
 {
@@ -229,6 +236,11 @@ bool Backpack::item_in_backpack(std::string item_type)
 
 	return(item);
 }
+
+/******************************************************************************************
+** Function: 
+** Description: 
+*******************************************************************************************/
 
 void Backpack::delete_specific_item(std::string item_type)
 {
@@ -289,6 +301,9 @@ void Backpack::delete_specific_item(std::string item_type)
 				delete findItem;
 			}
 
+			//Decrement number of tools
+			num_tools = num_tools - 1;
+
 			//Return if item is found and deleted
 			return;
 		}
@@ -306,6 +321,7 @@ void Backpack::delete_specific_item(std::string item_type)
 
 Backpack::~Backpack()
 {
+	
 	Node* nodePtr = head;
 
 	//Loop through the linked list
@@ -317,13 +333,11 @@ Backpack::~Backpack()
 		//Move onto next node if it exists
 		nodePtr = nodePtr->next;
 
-		//Delete character
-		delete garbage->tool;
-
 		//Delete node
 		delete garbage;
 	}
 
 	head = nullptr;
 	tail = nullptr;
+	
 }
