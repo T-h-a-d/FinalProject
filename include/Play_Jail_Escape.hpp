@@ -47,8 +47,10 @@ public:
 	void move_person(Person* p, std::string direction);
 	bool check_location(Person*, Person*);
 	int print_user_options();
+	void print_item_descriptions();
 	bool check_if_game_over();
 	void print_clock();
+	void print_map();
 	~Play_Jail_Escape();
 
 

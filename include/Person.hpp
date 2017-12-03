@@ -28,7 +28,7 @@ public:
 	Space* get_location();
 	void set_location(Space*);
 	void add_item(Item*);
-	bool kill_guard();
+	virtual bool kill_guard();
 	bool backpack_full();
 	void delete_backpack_item();
 	void delete_specific_item(std::string);

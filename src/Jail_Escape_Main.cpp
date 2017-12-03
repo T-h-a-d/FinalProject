@@ -25,7 +25,7 @@ int main()
 	std::cout << "=========================================================================" << std::endl;
 	std::cout << "-- Backstory --                                                        --" << std::endl;
 	std::cout << "---------------                                                        --" << std::endl;
-	std::cout << "-- You are an inmate at a ma|imum-security prison. It is the middle of --" << std::endl;
+	std::cout << "-- You are an inmate at a maximum-security prison. It is the middle of --" << std::endl;
 	std::cout << "-- the night and your jail cell mysteriously opens. You peek out into  --" << std::endl;
 	std::cout << "-- the hallway and see that everyone else is asleep. The guard is      --" << std::endl;
 	std::cout << "-- nowhere to be seen ...                                              --" << std::endl;
@@ -61,6 +61,10 @@ int main()
 	std::cout << "-- Hint: Certain items you collect will give you special abilities.    --" << std::endl;
 	std::cout << "-- Choose the items you collect wisely because you can only carry 3    --" << std::endl;
 	std::cout << "-- items at a time. Once you drop an item it is gone for good!         --" << std::endl;
+	std::cout << "--                                                                     --" << std::endl;
+	std::cout << "-- Note: Action options from the menu take time and allow the guard to --" << std::endl;
+	std::cout << "-- move while the Help options from the menu do not! If you get stuck, --" << std::endl;
+	std::cout << "-- use the Help options!                                               --" << std::endl;
 	std::cout << "--                                                                     --" << std::endl;
 	std::cout << "--                           GOOD LUCK!                                --" << std::endl;
 	std::cout << "=========================================================================" << std::endl;

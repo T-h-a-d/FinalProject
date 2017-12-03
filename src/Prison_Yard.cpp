@@ -142,3 +142,9 @@ void Prison_Yard::inspect_room(Person* p)
 		std::cout << std::endl;
 	}
 }
+
+Prison_Yard::~Prison_Yard()
+{
+	//Delete the dynamically allocated item
+	delete keycard;
+}

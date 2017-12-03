@@ -143,4 +143,9 @@ void Kitchen::inspect_room(Person* p)
 	}
 }
 
+Kitchen::~Kitchen()
+{
+	//Deleted the dynamically allocated item
+	delete spoon;
+}
 

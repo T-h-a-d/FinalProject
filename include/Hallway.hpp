@@ -31,5 +31,6 @@ public:
 	void found_syringe(Person*);
 	void found_radio(Person*);
 	void found_gun(Person*);
+	~Hallway();
 };
 #endif

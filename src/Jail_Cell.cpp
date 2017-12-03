@@ -15,6 +15,7 @@ Jail_Cell::Jail_Cell()
 {
 	name = "Jail Cell";
 	minutes_dug = 0;
+	hole = false;
 
 	//Takes 4 hours to dig the hole with just the spoon (no drugs)
 	minutes_to_completion = 240;

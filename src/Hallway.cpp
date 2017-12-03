@@ -359,3 +359,11 @@ void Hallway::found_gun(Person* p)
 		}
 	}
 }
+
+Hallway::~Hallway()
+{
+	//Delete all of the dynamically allocated items
+	delete syringe;
+	delete radio;
+	delete gun;
+}

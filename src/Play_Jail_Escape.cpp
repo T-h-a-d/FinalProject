@@ -15,7 +15,7 @@ Play_Jail_Escape::Play_Jail_Escape()
 {
 	//Dynamically allocate spaces
 	jail_cell = new Jail_Cell;
-	hallway1  = new Hallway("Prison Cell Hallway");
+	hallway1  = new Hallway("Jail Cell Hallway");
 	hallway2  = new Hallway("Infirmary Hallway");
   hallway3  = new Hallway("Entrance Hallway");
   yard 			= new Prison_Yard;	
@@ -175,7 +175,7 @@ void Play_Jail_Escape::start_game()
 				break;
 			}
 
-			case(5);
+			case(5):
 			{
 				//print the map for the user to see
 				print_map();
@@ -185,6 +185,7 @@ void Play_Jail_Escape::start_game()
 		//Print out guard location if user has guard_radio
 		if(inmate->player_has_item("Guard's Radio"))
 		{
+			std::cout << std::endl;
 			std::cout << "Guard's Current Location: ";
 			std::cout << guard->get_location()->get_name() << std::endl;
 		}
@@ -276,11 +277,17 @@ int Play_Jail_Escape::print_user_options()
 {
 	int user_choice;
 
-	std::cout << "1. Travel to another room " << std::endl;
+	std::cout << std::endl;
+	std::cout << "------------ Actions ------------" << std::endl;
+	std::cout << "1. Travel to another room" << std::endl;
 	std::cout << "2. Inspect " << inmate->get_location()->get_name() << std::endl;
+	std::cout << std::endl;
+
+	std::cout << "------------ Help ---------------" << std::endl;
 	std::cout << "3. Look at contents of backpack" << std::endl;
-	std::cout << "4. Item help" << std::endl;
+	std::cout << "4. Print item descriptions" << std::endl;
 	std::cout << "5. Print map" << std::endl;
+	std::cout << std::endl;
 
 	Menu_Range_Int_Prompt("", user_choice, 1, 5);
 
@@ -307,7 +314,7 @@ void Play_Jail_Escape::print_item_descriptions()
 	std::cout << "-- Syringe                   Hallway               Increases inmates   --" << std::endl;
 	std::cout << "--                        (random drop)            digging speed. Must --" << std::endl;
 	std::cout << "--                                                 be adminstered in   --" << std::endl;  
-	std::cout << "--                                                 the infirmary       --" << std::endl;     
+	std::cout << "--                                                 the infirmary.      --" << std::endl;     
 	std::cout << "--                                                                     --" << std::endl;
 	std::cout << "-- Warden's Mask          Warden's Office          Disguises inmate    --" << std::endl;
 	std::cout << "--                                                 so that he cannot   --" << std::endl;   
@@ -316,6 +323,10 @@ void Play_Jail_Escape::print_item_descriptions()
 	std::cout << "-- Spoon                     Kitchen               Used to dig an      --" << std::endl;  
 	std::cout << "--                                                 escape hole in the  --" << std::endl;   
 	std::cout << "--                                                 inmate's jail cell. --" << std::endl; 
+	std::cout << "--                                                                     --" << std::endl;
+	std::cout << "-- Key Card                  Unknown               Used to gain access --" << std::endl;
+	std::cout << "--                                                 to the Warden's     --" << std::endl;
+	std::cout << "--                                                 Office.             --" << std::endl;
 	std::cout << "=========================================================================" << std::endl;   
 	std::cout << std::endl;
 }
@@ -369,11 +380,19 @@ bool Play_Jail_Escape::check_if_game_over()
 		}
 
 		//Inmate can choose to shoot the guard
-		else if(inmate->player_has_item("gun"))
+		else if(inmate->player_has_item("Gun"))
 		{
-			if(inmate->kill_guard())
+			bool dead = inmate->kill_guard();
+
+			if(dead)
 			{
-				game_over = false;
+				game_over = true;
+
+				std::cout << std::endl;
+				std::cout << "What did you think no one would hear your gun shot?" << std::endl;
+				std::cout << "You've been detained by the other guard's in the prison..." << std::endl;
+				std::cout << std::endl;
+				std::cout << "GAME OVER" << std::endl;
 			}
 
 			else
@@ -457,15 +476,15 @@ void Play_Jail_Escape::print_map()
 	std::cout << "-- Map --                                                                --" << std::endl;
 	std::cout << "---------                                                                --" << std::endl;
 	std::cout << "--                                                                       --" << std::endl;
-	std::cout << "--  -------------                     -------------                      --" << std::endl;
-	std::cout << "--  | Entrance  |                     | Warden's  |                      --" << std::endl;
-	std::cout << "--  |           |                     | Office    |                      --" << std::endl;
-	std::cout << "--  |           |                     |           |                      --" << std::endl;
-	std::cout << "--  ----     ----                     ----     ----                      --" << std::endl;
-	std::cout << "--      |   |                             |   |                          --" << std::endl;
-	std::cout << "--      |   |                             |   |                          --" << std::endl;
+	std::cout << "--  -------------                       -------------                    --" << std::endl;
+	std::cout << "--  | Entrance  |                       | Warden's  |                    --" << std::endl;
+	std::cout << "--  |           |                       | Office    |                    --" << std::endl;
+	std::cout << "--  |           |                       |           |                    --" << std::endl;
+	std::cout << "--  ----     ----                       ----     ----                    --" << std::endl;
+	std::cout << "--      |   |                               |   |                        --" << std::endl;
+	std::cout << "--      |   |                               |   |                        --" << std::endl;
 	std::cout << "-- -----     -----   ---------------   -----     -----   --------------  --" << std::endl;
-	std::cout << "-- | Entrance    |---|  Kitchen    |---| Jail Yard   |---| Jail Cell  |  --" << std::endl;
+	std::cout << "-- | Entrance    |---|  Kitchen    |---| Prison Yard |---| Jail Cell  |  --" << std::endl;
 	std::cout << "-- | Hallway                                                Hallway   |  --" << std::endl;
 	std::cout << "-- |             |---|             |---|             |---|            |  --" << std::endl;
 	std::cout << "-- ---------------   -----     -----   -----     -----   -----     ----  --" << std::endl;

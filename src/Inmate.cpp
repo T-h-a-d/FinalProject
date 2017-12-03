@@ -25,7 +25,7 @@ bool Inmate::kill_guard()
 
 	std::cout << "You ended up in the same room as the guard ... but you have a gun." << std::endl;
 	std::cout << "1. Shoot guard" << std::endl;
-	std::cout << "2. Leave guard alone and lose the game" << std::endl;
+	std::cout << "2. Do the right thing and let the guard live" << std::endl;
 
 	Menu_Range_Int_Prompt("", user_choice, 1, 2);
 
@@ -38,9 +38,8 @@ bool Inmate::kill_guard()
 
 		case 2:
 		{
+			std::cout << "You fool!" << std::endl;
 			return(false);
 		}
 	}
-
-
 }

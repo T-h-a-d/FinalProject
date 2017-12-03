@@ -22,5 +22,6 @@ public:
 	void print_item_needed();
 	std::string get_name_of_item_needed();
 	void inspect_room(Person*);
+	~Prison_Yard();
 };
 #endif

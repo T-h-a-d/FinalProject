@@ -65,10 +65,9 @@ void Wardens_Office::inspect_room(Person* p)
 		std::cout << std::endl;
 		std::cout << "You look at the Warden's desk and see a strange mask on top of it" << std::endl;
 		std::cout << "... It's a mask of the Warden's face" << std::endl;
-		std::cout << "What kind of weird $#@^ is he into?" << std::endl;
 		std::cout << std::endl;
 
-		std::cout << "1. Pick up the Warden's Mask" << std::endl;
+		std::cout << "1. Put on the Warden's Mask" << std::endl;
 		std::cout << "2. Try to forget you ever saw it" << std::endl;
 
 		Menu_Range_Int_Prompt("", user_choice, 1, 2);
@@ -145,4 +144,10 @@ void Wardens_Office::inspect_room(Person* p)
 		std::cout << "There doesn't seem to be anything here" << std::endl;
 		std::cout << std::endl;
 	}
+}
+
+Wardens_Office::~Wardens_Office()
+{
+	//Delete dynamically allocated item
+	delete wardens_mask;
 }
