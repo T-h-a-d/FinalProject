@@ -2,13 +2,22 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Jail_Cell class. This class is 
+** derived from the Space class and inherits all of its member variables and functions. 
+** This class also overrides functions to check if there is a special item needed to enter
+** the room, print the item needed to enter the room(if there is one), get the name of the
+** item needed to enter the room, and inspect the room. Inspect the room allows the player
+** to interact with the room. This class also contains member variables to keep track of if 
+** the player has started digging a hole, if the whole is done being dug, how many minutes 
+** the player has dug for, and how many more minutes are needed to finish.
 *******************************************************************************************/
 #include "Jail_Cell.hpp"
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Constructor: Jail_Cell
+** Description: Constructs a Jail_Cell object. The constructor initialzes the name of the 
+** object to "Jail Cell", and the rest of the member variables that describe the 
+** prisoners escape hole.
 *******************************************************************************************/
 
 Jail_Cell::Jail_Cell()
@@ -24,8 +33,9 @@ Jail_Cell::Jail_Cell()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_needed
+** Description: Boolean function which returns false becasue no items are needed to enter
+** the jail cell.
 *******************************************************************************************/
 
 bool Jail_Cell::item_needed()
@@ -34,8 +44,8 @@ bool Jail_Cell::item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_needed
+** Description: No items are printed because no items are needed to enter this space
 *******************************************************************************************/
 
 void Jail_Cell::print_item_needed()
@@ -45,8 +55,9 @@ void Jail_Cell::print_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: get_name_of_item_needed
+** Description: Returns a string that represents the name of the item needed to enter
+** the room. Note: The player does not need a specific item to enter this room.
 *******************************************************************************************/
 
 std::string Jail_Cell::get_name_of_item_needed()
@@ -55,8 +66,13 @@ std::string Jail_Cell::get_name_of_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: inspect_room
+** Description: Takes a person pointer as a parameter and checks the persons backpack for
+** the spoon object. If they player has the spoon and if the hole has not been started yet,
+** the player is asked if they would like to start digging the hole. If the hole has 
+** already been started, then the player can choose to continue digging the hole. The 
+** percentage of the hole dug is displayed every round that the inspect room function is 
+** chosen for this space, and it is much quicker to dig if adminstered the syringe first.
 *******************************************************************************************/
 
 void Jail_Cell::inspect_room(Person* p)
@@ -205,8 +221,9 @@ void Jail_Cell::inspect_room(Person* p)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: done_digging
+** Description: Function which checks if the minutes_to_completion is 0. Returns true if it
+** is zero, and false otherwise.
 *******************************************************************************************/
 
 bool Jail_Cell::done_digging()

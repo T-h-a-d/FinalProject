@@ -2,23 +2,28 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Infirmary class. This class is 
+** derived from the Space class and inherits all of its member variables and functions. 
+** This class also overrides functions to check if there is a special item needed to enter
+** the room, print the item needed to enter the room(if there is one), get the name of the
+** item needed to enter the room, and inspect the room. Inspect the room allows the player
+** to interact with the room. 
 *******************************************************************************************/
 #include "Infirmary.hpp"
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Constructor: Infirmary
+** Description: Constructs an Infirmary object and sets its name to "Infirmary"
 *******************************************************************************************/
-
 Infirmary::Infirmary()
 {
 	name = "Infirmary";
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_needed
+** Description: Boolean function which returns false because no items are needed to enter
+** the Hallway.
 *******************************************************************************************/
 
 bool Infirmary::item_needed()
@@ -27,8 +32,8 @@ bool Infirmary::item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_needed
+** Description: Prints nothing because no items are needed.
 *******************************************************************************************/
 
 void Infirmary::print_item_needed()
@@ -38,8 +43,9 @@ void Infirmary::print_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: get_name_of_item_needed
+** Description: Returns a string that represents the name of the item needed to enter
+** the room. Note: The player does not need a specific item to enter this room.
 *******************************************************************************************/
 
 std::string Infirmary::get_name_of_item_needed()
@@ -48,8 +54,13 @@ std::string Infirmary::get_name_of_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: inspect_room
+** Description: Takes a person pointer as a parameter and checks the persons backpack to 
+** see if they have the syringe. If they do have the item, then the function asks if the
+** user would like to have the syringe adminstered by the nurse. If they say yes, the 
+** digging speed of the person is changed and the syringe is removed from the backpack.
+** Otherwise, nothing happens and a string is printed out giving a hint as to what the 
+** Infirmary space is for.
 *******************************************************************************************/
 
 void Infirmary::inspect_room(Person* p)

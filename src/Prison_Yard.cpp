@@ -2,13 +2,20 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Prison_Yard class. This class is 
+** derived from the Space class and inherits all of its member variables and functions. 
+** This class also overrides functions to check if there is a special item needed to enter
+** the room, print the item needed to enter the room(if there is one), get the name of the
+** item needed to enter the room, and inspect the room. Inspect the room allows the player
+** to interact with the room. 
 *******************************************************************************************/
 #include "Prison_Yard.hpp"
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Constructor: Prison_Yard
+** Description: Constructs a Prison Yard object. Initializes the name of the space to 
+** "Prison Yard", dynamically allocates a new Key_Card item, and sets the has_keycard 
+** boolean to true.
 *******************************************************************************************/
 
 Prison_Yard::Prison_Yard()
@@ -19,8 +26,9 @@ Prison_Yard::Prison_Yard()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_needed
+** Description: Boolean function which returns false becasue no items are needed to enter
+** the Prison_Yard Space.
 *******************************************************************************************/
 
 bool Prison_Yard::item_needed()
@@ -29,8 +37,8 @@ bool Prison_Yard::item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_needed
+** Description: Prints nothing because no items are needed to enter the Prison_Yard space.
 *******************************************************************************************/
 
 void Prison_Yard::print_item_needed()
@@ -40,8 +48,9 @@ void Prison_Yard::print_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: get_name_of_item_needed
+** Description: Returns a string that represents the name of the item needed to enter
+** the room. Note: The player does not need a specific item to enter this room.
 *******************************************************************************************/
 
 std::string Prison_Yard::get_name_of_item_needed()
@@ -50,8 +59,13 @@ std::string Prison_Yard::get_name_of_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: inspect_room
+** Description: Takes a person pointer as a parameter and asks the user if they would like
+** to pick up the keycard object. If they say yes, then the function will check if their
+** backpack is full. If it is not, the item is added to the backpack. If the backpack is
+** full, then the user is asked if they would like to delete an item to make room for the
+** keycard. If they say yes, then the user is asked which item they would like to delete.
+** The function then changes the person's backpack based upon these choices.
 *******************************************************************************************/
 
 void Prison_Yard::inspect_room(Person* p)
@@ -142,6 +156,12 @@ void Prison_Yard::inspect_room(Person* p)
 		std::cout << std::endl;
 	}
 }
+
+/******************************************************************************************
+** Destructor: Prison_Yard
+** Description: Destroys a Prison_Yard object and deletes all of the previously dynamically 
+** allocated objects.
+*******************************************************************************************/
 
 Prison_Yard::~Prison_Yard()
 {

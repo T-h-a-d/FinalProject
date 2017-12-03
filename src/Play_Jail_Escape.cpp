@@ -2,13 +2,26 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Play_Jail_Escape class. This class 
+** is used to implement a game of Jail Escape. It contains 9 different member variables to 
+** represent the different Spaces in the game, 2 different person pointers which represent 
+** the inmate and the guard, an int to keep track of the game_clock, and two integers to 
+** help print out the clock each round to the user. The Play_Jail_Escape class also has 
+** member variables to start and play the Jail Escape game, move a Person object from one 
+** space to another space, check the location of two person objects to see if they are in 
+** the same space, print the options for that round to the user, print the item descriptions 
+** for the user, print the clock for the user, print out the map for the user, and check if 
+** the game is over. This class also contains a constructor which connects all of the spaces 
+** into a 2-d board and a destructor.
 *******************************************************************************************/
 #include "Play_Jail_Escape.hpp"
 
 /******************************************************************************************
-** Constructor: 
-** Description: 
+** Constructor: Play_Jail_Escape
+** Description: Constructs a Play_Jail_Escape game object. The constructor dynaimcally 
+** allocates 9 different spaces and then connects them to eachother to create a 2-d board.
+** The constructor also dynamically allocates a guard and an inmate object, initializes
+** the game minutes to zero, and sets the starting hour to 1:00.
 *******************************************************************************************/
 
 Play_Jail_Escape::Play_Jail_Escape()
@@ -98,14 +111,18 @@ Play_Jail_Escape::Play_Jail_Escape()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: start_game
+** Description: This function implements a game of Jail Escape. The do while loop runs 
+** while the game_over conditions are not met. Each round, the user has the option to 
+** choose an action (moving or interacting with the space), or calling a function which
+** prints a map, backpack contents, or a hint guide. The actions take time off the game 
+** clock, while the help choices do not. The guard also moves every time the player chooses
+** an action. The location of the guard is printed out each round if the player has the
+** guard_radio.
 *******************************************************************************************/
 
 void Play_Jail_Escape::start_game()
 {
-	bool test = true;
-
 	do
 	{
 		print_clock();
@@ -194,8 +211,12 @@ void Play_Jail_Escape::start_game()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: move_person
+** Description: Function which takes a person pointer and string (direction) as paramters
+** and then changes the location of the person to the new location specified by the 
+** string which represents the correct direction to travel in. The guard is allowed to move
+** to any space, but the player is restricted to certain spaces based on the items in the
+** backpack.
 *******************************************************************************************/
 
 void Play_Jail_Escape::move_person(Person* p, std::string direction)
@@ -244,8 +265,11 @@ void Play_Jail_Escape::move_person(Person* p, std::string direction)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: check_location
+** Description: Function which takes two person pointers as parameters and checks if 
+** their current locations are equal to eachother. If they are in the same room, the 
+** function returns a boolean value of true. If they are not in the same room, the function
+** returns false.
 *******************************************************************************************/
 
 bool Play_Jail_Escape::check_location(Person* p1, Person* p2)
@@ -269,8 +293,10 @@ bool Play_Jail_Escape::check_location(Person* p1, Person* p2)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_user_options
+** Description: This function prints the options that the user has to choose from 
+** each round. The function then gets the user input, stores it in user_choice, and 
+** returns it as an integer to the start_game function above.
 *******************************************************************************************/
 
 int Play_Jail_Escape::print_user_options()
@@ -295,8 +321,9 @@ int Play_Jail_Escape::print_user_options()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_descriptions
+** Description: This function prints all of the item descriptions including the name of
+** the item, the location of the item, and the special function of the item.
 *******************************************************************************************/
 
 void Play_Jail_Escape::print_item_descriptions()
@@ -324,7 +351,7 @@ void Play_Jail_Escape::print_item_descriptions()
 	std::cout << "--                                                 escape hole in the  --" << std::endl;   
 	std::cout << "--                                                 inmate's jail cell. --" << std::endl; 
 	std::cout << "--                                                                     --" << std::endl;
-	std::cout << "-- Key Card                  Unknown               Used to gain access --" << std::endl;
+	std::cout << "-- Key Card                Prison Yard             Used to gain access --" << std::endl;
 	std::cout << "--                                                 to the Warden's     --" << std::endl;
 	std::cout << "--                                                 Office.             --" << std::endl;
 	std::cout << "=========================================================================" << std::endl;   
@@ -332,8 +359,13 @@ void Play_Jail_Escape::print_item_descriptions()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: check_if_game_over
+** Description: Function that checks the current status of the game. If the player has
+** reached the entrance or is done digging the hole in their cell, then the function 
+** returns true right away and the player wins the game. If the player ends up in the 
+** same space as the guard, the game is over if the player does not have the Wardens Mask
+** as a disguise. If the time has run out (6 hours), then the game is over and the player
+** loses. 
 *******************************************************************************************/
 
 bool Play_Jail_Escape::check_if_game_over()
@@ -431,8 +463,8 @@ bool Play_Jail_Escape::check_if_game_over()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_clock
+** Description: Function which prints the game clock to the users screen. 
 *******************************************************************************************/
 
 void Play_Jail_Escape::print_clock()
@@ -469,6 +501,11 @@ void Play_Jail_Escape::print_clock()
 	}
 }
 
+/******************************************************************************************
+** Function: print_map
+** Description: Function which prints a map of the 2-d game board to the user's screen.
+*******************************************************************************************/
+
 void Play_Jail_Escape::print_map()
 {
 	std::cout << std::endl;
@@ -501,8 +538,9 @@ void Play_Jail_Escape::print_map()
 }
 
 /******************************************************************************************
-** Destructor: 
-** Description: 
+** Destructor: Play_Jail_Escape
+** Description: Destroys a Play_Jail_Escape object. Deletes all of the previously 
+** dynamically allocated Space objects and the 2 person objects (guard and inmate).
 *******************************************************************************************/
 
 Play_Jail_Escape::~Play_Jail_Escape()

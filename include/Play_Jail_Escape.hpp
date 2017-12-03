@@ -2,7 +2,17 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Header file for the Play_Jail_Escape class. This class is used to implement
+** a game of Jail Escape. It contains 9 different member variables to represent the 
+** different Spaces in the game, 2 different person pointers which represent the inmate and
+** the guard, an int to keep track of the game_clock, and two integers to help print out the
+** clock each round to the user. The Play_Jail_Escape class also has member variables to 
+** start and play the Jail Escape game, move a Person object from one space to another 
+** space, check the location of two person objects to see if they are in the same space, 
+** print the options for that round to the user, print the item descriptions for the user,
+** print the clock for the user, print out the map for the user, and check if the game
+** is over. This class also contains a constructor which connects all of the spaces into
+** a 2-d board and a destructor.
 *******************************************************************************************/
 #ifndef PLAY_JAIL_ESCAPE_HPP
 #define PLAY_JAIL_ESCAPE_HPP

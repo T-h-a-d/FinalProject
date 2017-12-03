@@ -2,13 +2,19 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Kitchen class. This class is 
+** derived from the Space class and inherits all of its member variables and functions. 
+** This class also overrides functions to check if there is a special item needed to enter
+** the room, print the item needed to enter the room(if there is one), get the name of the
+** item needed to enter the room, and inspect the room. Inspect the room allows the player
+** to interact with the room. 
 *******************************************************************************************/
 #include "Kitchen.hpp"
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Constructor: Kitchen
+** Description: Constructs a kitchen object. Initializes the name of the space to "Kitchen",
+** dynamically allocates a new Spoon item, and sets the has_spoon boolean to true.
 *******************************************************************************************/
 
 Kitchen::Kitchen()
@@ -19,8 +25,9 @@ Kitchen::Kitchen()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_needed
+** Description: Boolean function which returns false because no items are needed to enter 
+** the kitchen area.
 *******************************************************************************************/
 
 bool Kitchen::item_needed()
@@ -29,8 +36,8 @@ bool Kitchen::item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_needed
+** Description: Prints nothing because no items are needed to enter the Kitchen space.
 *******************************************************************************************/
 
 void Kitchen::print_item_needed()
@@ -40,8 +47,9 @@ void Kitchen::print_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: get_name_of_item_needed
+** Description: Returns a string that represents the name of the item needed to enter
+** the room. Note: The player does not need a specific item to enter this room.
 *******************************************************************************************/
 
 std::string Kitchen::get_name_of_item_needed()
@@ -50,8 +58,13 @@ std::string Kitchen::get_name_of_item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: inspect_room
+** Description: Takes a person pointer as a parameter and asks the user if they would like
+** to pick up the spoon object. If they say yes, then the function will check if their
+** backpack is full. If it is not, the item is added to the backpack. If the backpack is
+** full, then the user is asked if they would like to delete an item to make room for the
+** spoon. If they say yes, then the user is asked which item they would like to delete.
+** The function then changes the person's backpack based upon these choices.
 *******************************************************************************************/
 
 void Kitchen::inspect_room(Person* p)
@@ -142,6 +155,12 @@ void Kitchen::inspect_room(Person* p)
 		std::cout << std::endl;
 	}
 }
+
+/******************************************************************************************
+** Destructor: Kitchen
+** Description: Destroys a Kitchen object and deletes all of the previously dynamically 
+** allocated objects.
+*******************************************************************************************/
 
 Kitchen::~Kitchen()
 {

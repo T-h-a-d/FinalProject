@@ -2,7 +2,12 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Backpack class. This class is a 
+** linked list like structure which holds item objects. It has functions to test if the 
+** backpack is empty, to add an item to the backpack, delete an item based on the position
+** it holds in the backpack, delete an item based on its name, print the contents of the 
+** backpack, check if the backpack is at capacity (3 items), and check if an item exists
+** in the backpack. The class also has a constructor and destructor.
 *******************************************************************************************/
 #include "Backpack.hpp"
 
@@ -85,7 +90,9 @@ void Backpack::add_item(Item* t)
 
 /******************************************************************************************
 ** Function: delete_item
-** Description: 
+** Description: Takes an int as parameter that corresponds to the position in the backpack.
+** The function then iterates to the specfic position and deletes that item from the 
+** backpack.
 *******************************************************************************************/
 
 void Backpack::delete_item(int t)
@@ -196,7 +203,8 @@ int Backpack::print_list()
 
 /******************************************************************************************
 ** Function: at_capacity
-** Description: 
+** Description: Checks if the backpack has any more room. Returns true if it is full and 
+** false otherwise.
 *******************************************************************************************/
 
 bool Backpack::at_capacity()
@@ -213,8 +221,9 @@ bool Backpack::at_capacity()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_in_backpack
+** Description: Takes in a string as a parameter and checks if an item of that specfic type
+** is currently in the backpack. 
 *******************************************************************************************/
 
 bool Backpack::item_in_backpack(std::string item_type)
@@ -238,8 +247,10 @@ bool Backpack::item_in_backpack(std::string item_type)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: delete_specific_item
+** Description: Takes an string which represents the type of item as a parameter and 
+** checks the contents of the backpack to see if that item resides in the backpack. If it 
+** does, the item is deleted from the backpack and the remaining nodes are reconnected.
 *******************************************************************************************/
 
 void Backpack::delete_specific_item(std::string item_type)

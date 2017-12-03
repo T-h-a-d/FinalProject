@@ -2,13 +2,22 @@
 ** Final Project: Jail Escape
 ** Thad Sauter
 ** 12/5/17
-** Description: 
+** Description: Function implementation section for the Hallway class. This class is 
+** derived from the Space class and inherits all of its member variables and functions. 
+** This class also overrides functions to check if there is a special item needed to enter
+** the room, print the item needed to enter the room(if there is one), get the name of the
+** item needed to enter the room, and inspect the room. Inspect the room allows the player
+** to interact with the room. 
 *******************************************************************************************/
 #include "Hallway.hpp"
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Constructor: Hallway
+** Description: Constructs a Hallway object and sets its name based on the string parameter,
+** n. This is because there are multiple different Hallways in the game, and it is important
+** to tell the difference between the 3. The constructor then dynamically allocates three
+** objects, a syringe, a guard_radio, and a gun. It also sets the has_item boolean variable
+** to true for all three objects.
 *******************************************************************************************/
 
 Hallway::Hallway(std::string n)
@@ -25,8 +34,9 @@ Hallway::Hallway(std::string n)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: item_needed
+** Description: Boolean function which returns false because no items are needed to enter
+** the Hallway.
 *******************************************************************************************/
 
 bool Hallway::item_needed()
@@ -35,8 +45,8 @@ bool Hallway::item_needed()
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: print_item_needed
+** Description: Prints nothing because no items are needed.
 *******************************************************************************************/
 
 void Hallway::print_item_needed()
@@ -45,14 +55,23 @@ void Hallway::print_item_needed()
 	
 }
 
+/******************************************************************************************
+** Function: get_name_of_item_needed
+** Description: Returns a string that represents the name of the item needed to enter
+** the room. Note: The player does not need a specific item to enter this room.
+*******************************************************************************************/
+
 std::string Hallway::get_name_of_item_needed()
 {
 	return("");
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: inspect_room
+** Description: This function takes a Person pointer as a parameter and uses it to call one
+** of three functions which are chosen randomly. The player is only allowed to pick up one
+** item of a certain type per hallway they encounter, and found_item keeps track of which
+** items have been picked up.
 *******************************************************************************************/
 
 void Hallway::inspect_room(Person* p)
@@ -114,8 +133,13 @@ void Hallway::inspect_room(Person* p)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: found_syringe
+** Description: Takes a person pointer as a parameter and asks the user if they would like
+** to pick up the syringe object. If they say yes, then the function will check if their
+** backpack is full. If it is not, the item is added to the backpack. If the backpack is
+** full, then the user is asked if they would like to delete an item to make room for the
+** syringe. If they say yes, then the user is asked which item they would like to delete.
+** The function then changes the person's backpack based upon these choices.
 *******************************************************************************************/
 
 void Hallway::found_syringe(Person* p)
@@ -199,8 +223,13 @@ void Hallway::found_syringe(Person* p)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: found_radio
+** Description: Takes a person pointer as a parameter and asks the user if they would like
+** to pick up the radio object. If they say yes, then the function will check if their
+** backpack is full. If it is not, the item is added to the backpack. If the backpack is
+** full, then the user is asked if they would like to delete an item to make room for the
+** radio. If they say yes, then the user is asked which item they would like to delete.
+** The function then changes the person's backpack based upon these choices.
 *******************************************************************************************/
 
 void Hallway::found_radio(Person* p)
@@ -280,8 +309,13 @@ void Hallway::found_radio(Person* p)
 }
 
 /******************************************************************************************
-** Function: 
-** Description: 
+** Function: found_gun
+** Description: Takes a person pointer as a parameter and asks the user if they would like
+** to pick up the gun object. If they say yes, then the function will check if their
+** backpack is full. If it is not, the item is added to the backpack. If the backpack is
+** full, then the user is asked if they would like to delete an item to make room for the
+** gun. If they say yes, then the user is asked which item they would like to delete.
+** The function then changes the person's backpack based upon these choices.
 *******************************************************************************************/
 
 void Hallway::found_gun(Person* p)
@@ -359,6 +393,12 @@ void Hallway::found_gun(Person* p)
 		}
 	}
 }
+
+/******************************************************************************************
+** Destructor: Hallway
+** Description: Destroys a Hallway object and deletes all of the previously dynamically 
+** allocated objects.
+*******************************************************************************************/
 
 Hallway::~Hallway()
 {
